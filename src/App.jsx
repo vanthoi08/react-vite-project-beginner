@@ -30,9 +30,8 @@ const App = () => {
   return (
     <div className="todo-container">
       <div className="todo-title">Todo List</div>
-      <TodoNew 
-     addNewTodo = {addNewTodo}
-      
+      <TodoNew
+       addNewTodo = {addNewTodo}
       />
      <TodoData
      name={hoidanit}
