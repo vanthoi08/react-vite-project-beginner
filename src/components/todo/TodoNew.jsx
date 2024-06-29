@@ -5,7 +5,6 @@ const TodoNew = (props) =>{
 
 
   const {addNewTodo} = props;
-  // addNewTodo("eric"); // fire
   const handleClick = () => {
     addNewTodo(valueInput);
     setValueInput("");
