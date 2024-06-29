@@ -10,10 +10,11 @@
     font-weight: 600;
 }
 .todo-new{
-    width: 100%;
+  width: 100%;
   display: flex;
   gap: 15px;
   justify-content: center;
+  margin-top: 20px;
 }
 .todo-data{
     margin-top: 20px;

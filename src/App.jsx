@@ -30,8 +30,6 @@ const App = () => {
     <div className="todo-container">
       <div className="todo-title">Todo List</div>
       <TodoNew addNewTodo={addNewTodo} />
-    
-
 {
         todoList.length > 0 ?
         <TodoData todoList={todoList}
