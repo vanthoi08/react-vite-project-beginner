@@ -1,4 +1,4 @@
-const TodoData = ({props}) =>{
+const TodoData = (props) =>{
   // props là một object
   // {
   //   name: "eric",
@@ -6,7 +6,7 @@ const TodoData = ({props}) =>{
   //   data: {}
   // }
   // cach 1
-  // const {name, age, data} = props;
+  const {name, age, data} = props;
   // cach 2:
   // const name = props.name;
   // const age = props.age;
@@ -17,6 +17,9 @@ console.log(">>> check props: ", props);
           <div>My name is {name}</div>
         <div>Learning React</div>
         <div>Watching Youtube</div>
+        <div>
+            {JSON.stringify(props.todoList)}
+        </div>
       </div>
     );
 }
