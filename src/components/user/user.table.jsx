@@ -41,7 +41,7 @@ const UserTable = (props) => {
         console.log(">>> Check index",index)
         return(
           <>
-          {index +1}
+          {(index +1)+(current-1)*pageSize}
           </>
         );
       }
@@ -96,6 +96,20 @@ const UserTable = (props) => {
   ];
 
   const onChange = (pagination, filters, sorter, extra) => {
+    // setCurrent, setPageSize
+    // nếu thay đổi trang: current
+    if(pagination && pagination.current) {
+      if(+pagination.current != +current){
+        setCurrent(+pagination.current); // + conver String to number vd: "5" => 5
+      }
+    }
+
+      // nếu thay đổi tổng số phần tử: pageSize
+      if(pagination && pagination.pageSize) {
+        if(+pagination.pageSize != +pageSize){
+          setPageSize(+pagination.pageSize); // + conver String to number vd: "5" => 5
+        }
+      }
     console.log(">>> Check ",{pagination, filters, sorter, extra})
    };
 
