@@ -1,9 +1,34 @@
-import { Button, Input, Form } from "antd";
+import { Button, Input, Form, notification } from "antd";
+import { registerUserAPI } from "../services/api.service";
+import { useNavigate } from "react-router-dom";
 const RegisterPage = () => {
   const [form] = Form.useForm();
+  const navigate = useNavigate();
 
-  const onFinish = (values) =>{
+
+  const onFinish = async (values) =>{
     console.log(values)
+    // call apivalues.
+    const res =  await registerUserAPI(
+              values.fullName,
+              values.email,
+              values.password,
+              values.phone);
+      
+      if(res.data){
+        notification.success({
+          message: "Register user",
+          description: "Đăng ký user thành công "
+        });
+        navigate("/login");
+      }else{
+        notification.error({
+          message: "Register user error",
+          description: JSON.stringify(res.message)
+        })
+      }
+
+
   }
   return (
     <Form
@@ -37,7 +62,7 @@ const RegisterPage = () => {
           rules={[
             {
               required: true,
-              message: "Please input your username!",
+              message: "Please input your email!",
             },
           ]}
         >
@@ -50,7 +75,7 @@ const RegisterPage = () => {
           rules={[
             {
               required: true,
-              message: "Please input your username!",
+              message: "Please input your password!",
             },
           ]}
         >
@@ -63,7 +88,8 @@ const RegisterPage = () => {
           rules={[
             {
               required: true,
-              message: "Please input your username!",
+              pattern: new RegExp(/\d+/g),
+              message: "Wrong format!"
             },
           ]}
         >
@@ -76,6 +102,17 @@ const RegisterPage = () => {
            type="primary">
             Register
             </Button>
+
+            {/* <Button
+            onClick={() =>{
+              form.setFieldsValue({
+                email: "hoidanit@gmail.com",
+                fullName: "eric"
+              })
+              console.log(">>> Check form :",  form.getFieldsValue())
+            
+            }}
+            >Test</Button> */}
         </div>
       </div>
     </Form>
