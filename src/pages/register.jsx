@@ -1,4 +1,4 @@
-import { Button, Input, Form, notification } from "antd";
+import { Button, Input, Form, notification, Row, Col  } from "antd";
 import { registerUserAPI } from "../services/api.service";
 import { useNavigate } from "react-router-dom";
 const RegisterPage = () => {
@@ -37,25 +37,27 @@ const RegisterPage = () => {
         onFinish={onFinish}
       //   onFinishFailed={onFinishFailed}
       autoComplete="off"
+      style={{margin:"10px"}}
     >
-      <div
-        style={{
-          margin: "50px",
-        }}
-      >
-        <Form.Item
-          label="Full Name"
-          name="fullName"
-          rules={[
-            {
-              required: true,
-              message: "Please input your username!",
-            },
-          ]}
-        >
-          <Input />
-        </Form.Item>
+      <Row justify={"center"}>
+        <Col xs={24} md = {8}>
+          <Form.Item
+            label="Full Name"
+            name="fullName"
+            rules={[
+              {
+                required: true,
+                message: "Please input your username!",
+              },
+            ]}
+          >
+            <Input />
+          </Form.Item>
+        </Col>
+      </Row>
 
+      <Row justify={"center"}>
+        <Col xs={24} md = {8}>
         <Form.Item
           label="Email"
           name="email"
@@ -68,7 +70,11 @@ const RegisterPage = () => {
         >
           <Input />
         </Form.Item>
+        </Col>
+      </Row>
 
+    <Row justify={"center"}>
+        <Col xs={24} md = {8}>
         <Form.Item
           label="Password"
           name="password"
@@ -81,7 +87,10 @@ const RegisterPage = () => {
         >
           <Input.Password />
         </Form.Item>
-
+        </Col>
+    </Row>
+    <Row justify={"center"}>
+        <Col xs={24} md = {8}>
         <Form.Item
           label="Phone number"
           name="phone"
@@ -95,26 +104,33 @@ const RegisterPage = () => {
         >
           <Input />
         </Form.Item>
+        </Col>
+    </Row>
 
-        <div>
-          <Button 
-          onClick={()=> form.submit()}
-           type="primary">
-            Register
-            </Button>
+    <Row justify={"center"}>
+        <Col xs={24} md = {8}>
+                <div>
+                  <Button 
+                  onClick={()=> form.submit()}
+                  type="primary">
+                    Register
+                    </Button>
 
-            {/* <Button
-            onClick={() =>{
-              form.setFieldsValue({
-                email: "hoidanit@gmail.com",
-                fullName: "eric"
-              })
-              console.log(">>> Check form :",  form.getFieldsValue())
-            
-            }}
-            >Test</Button> */}
-        </div>
-      </div>
+                    {/* <Button
+                    onClick={() =>{
+                      form.setFieldsValue({
+                        email: "hoidanit@gmail.com",
+                        fullName: "eric"
+                      })
+                      console.log(">>> Check form :",  form.getFieldsValue())
+                    
+                    }}
+                    >Test</Button> */}
+                </div>
+        </Col>
+    </Row>
+      
+   
     </Form>
   );
 };
