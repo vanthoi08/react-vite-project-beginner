@@ -2,6 +2,8 @@ import { Link, NavLink } from "react-router-dom";
 import { Menu } from "antd";
 import {
   UsergroupAddOutlined,
+  LoginOutlined,
+  AliwangwangOutlined,
   HomeOutlined,
   AuditOutlined,
   SettingOutlined,
@@ -35,21 +37,24 @@ const Header = () => {
       key: "products",
       icon: <AuditOutlined />,
     },
-    {
-      label: "Cài đặt",
+    ...(!user.id ? [{
+      label: <Link to={"/login"}>Đăng nhập</Link>,
+      key: 'login',
+      icon:<LoginOutlined />,
+    }] : []),
+
+    ...(user.id  ? [{
+      label: `Welcome ${user.fullName}`,
       key: "setting",
+      icon:<AliwangwangOutlined />,
      children: [
-      {
-        label: <Link to={"/login"}>Đăng nhập</Link>,
-        key: 'login',
-      },
       {
         label: 'Đăng xuất',
         key: 'logout',
       },
-
      ]
-    },
+    },] : []),
+    
   ];
   return (
     <Menu
