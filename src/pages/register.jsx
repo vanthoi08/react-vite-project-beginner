@@ -7,7 +7,6 @@ const RegisterPage = () => {
 
 
   const onFinish = async (values) =>{
-    console.log(values)
     // call apivalues.
     const res =  await registerUserAPI(
               values.fullName,

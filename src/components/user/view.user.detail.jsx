@@ -32,7 +32,6 @@ const ViewUserDetail = (props) =>{
     const handleUpdateUserAvatar = async() =>{
       // Step 1: upload file
     const resUpload = await handleUploadFile(selectedFile, "avatar");
-    console.log("Check resUpload", resUpload)
     if(resUpload.data){
       // success
       const newAvatar = resUpload.data.fileUploaded;
@@ -54,7 +53,6 @@ const ViewUserDetail = (props) =>{
           description: JSON.stringify(resUpdateAvatar.message)
         })
       }
-      console.log(">>> Check newAvatar", newAvatar);
 
     }else{
       // failed
