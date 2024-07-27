@@ -2,6 +2,7 @@ import { Button, Popconfirm, Table } from "antd";
 import { useEffect, useState } from "react";
 import { fetchAllBookAPI } from "../../services/api.service";
 import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
+import ViewBookDetail from "./view.book.detail";
 
 const BookTable = (props) =>{
     const [dataBook, setDaTaBook] = useState([]);
@@ -12,6 +13,7 @@ const BookTable = (props) =>{
 
     const [isModalUpdateOpen, setIsModalUpdateOpen] = useState(false);
     const [dataUpdate, setDataUpdate]= useState(null);
+    
     const [dataDetail, setDataDetail] = useState(null);
     const [isDetailOpen, setIsDetailOpen] = useState(false);
 
@@ -159,7 +161,14 @@ const onChange = (pagination, filters, sorter, extra) => {
               } 
             }
             onChange={onChange}
-            />;
+            />
+            <ViewBookDetail
+            dataDetail = {dataDetail}
+            setDataDetail = {setDataDetail}
+            isDetailOpen = {isDetailOpen}
+            setIsDetailOpen = {setIsDetailOpen}
+            loadBook = {loadBook}
+             />
         </>
     );
 }
