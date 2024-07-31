@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { fetchAllBookAPI } from "../../services/api.service";
 import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
 import ViewBookDetail from "./view.book.detail";
+import CreateBookControl from "./create.book.control";
 
 const BookTable = (props) =>{
     const [dataBook, setDaTaBook] = useState([]);
@@ -17,11 +18,16 @@ const BookTable = (props) =>{
     const [dataDetail, setDataDetail] = useState(null);
     const [isDetailOpen, setIsDetailOpen] = useState(false);
 
+    const [isCreateOpen, setIsCreateOpen] = useState(false);
+
+
+
 
 
     useEffect(()=>{
         loadBook();
     },[current,pageSize])
+
 
 const loadBook = async() =>{
     const res = await fetchAllBookAPI(current,pageSize);
@@ -145,7 +151,12 @@ const onChange = (pagination, filters, sorter, extra) => {
             marginBottom:"10px"
             }}>
             <h3>Table Book</h3>
-            <Button type="primary">Create Book</Button>
+            <Button 
+            type="primary"
+            onClick={()=>{
+              setIsCreateOpen(true)
+            }}
+            >Create Book</Button>
           </div>
           <Table 
             columns={columns} 
@@ -167,7 +178,12 @@ const onChange = (pagination, filters, sorter, extra) => {
             setDataDetail = {setDataDetail}
             isDetailOpen = {isDetailOpen}
             setIsDetailOpen = {setIsDetailOpen}
-            loadBook = {loadBook}
+             />
+             <CreateBookControl 
+             isCreateOpen = {isCreateOpen}
+             setIsCreateOpen ={setIsCreateOpen}
+             loadBook = {loadBook}
+
              />
         </>
     );
