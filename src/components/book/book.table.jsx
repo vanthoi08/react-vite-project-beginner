@@ -4,6 +4,7 @@ import { fetchAllBookAPI } from "../../services/api.service";
 import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
 import ViewBookDetail from "./view.book.detail";
 import CreateBookControl from "./create.book.control";
+import CreateBookUncontrol from "./create.book.uncontrol";
 
 const BookTable = (props) =>{
     const [dataBook, setDaTaBook] = useState([]);
@@ -179,12 +180,19 @@ const onChange = (pagination, filters, sorter, extra) => {
             isDetailOpen = {isDetailOpen}
             setIsDetailOpen = {setIsDetailOpen}
              />
-             <CreateBookControl 
+             {/* <CreateBookControl 
              isCreateOpen = {isCreateOpen}
              setIsCreateOpen ={setIsCreateOpen}
              loadBook = {loadBook}
 
+             /> */}
+
+            <CreateBookUncontrol 
+             isCreateOpen = {isCreateOpen}
+             setIsCreateOpen ={setIsCreateOpen}
+             loadBook = {loadBook}
              />
+
         </>
     );
 }
