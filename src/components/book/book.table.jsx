@@ -23,6 +23,8 @@ const BookTable = (props) =>{
 
     const [isCreateOpen, setIsCreateOpen] = useState(false);
 
+    const [loadingTable, setLoadingTable] = useState(false);
+
 
 
 
@@ -33,6 +35,7 @@ const BookTable = (props) =>{
 
 
 const loadBook = async() =>{
+  setLoadingTable(true);
     const res = await fetchAllBookAPI(current,pageSize);
     if(res.data){
         setDaTaBook(res.data.result);
@@ -40,6 +43,7 @@ const loadBook = async() =>{
         setPageSize(res.data.meta.pageSize);
         setTotal(res.data.meta.total);
     }
+    setLoadingTable(false);
 }
 
 const handleDeleteBook =async (id)=>{
@@ -189,6 +193,7 @@ const onChange = (pagination, filters, sorter, extra) => {
               } 
             }
             onChange={onChange}
+            loading = {loadingTable}
             />
             <ViewBookDetail
             dataDetail = {dataDetail}
