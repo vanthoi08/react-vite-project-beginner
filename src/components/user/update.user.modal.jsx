@@ -4,14 +4,14 @@ import {updateUserAPI } from "../../services/api.service";
 
 const UpdateUserModal = (props) => {
     const [id, setId] = useState("");
-  const [fullName, setFullName] = useState("");
-  const [phone, setPhone] = useState("");
+    const [fullName, setFullName] = useState("");
+    const [phone, setPhone] = useState("");
 
   const {isModalUpdateOpen, setIsModalUpdateOpen,dataUpdate,setDataUpdate, loadUser} = props
 
   //next dataUpdate != prev dataUpdate
 useEffect(()=>{
-    if(dataUpdate){
+    if(dataUpdate && dataUpdate._id){
         setId(dataUpdate._id);
         setFullName(dataUpdate.fullName);
         setPhone(dataUpdate.phone);

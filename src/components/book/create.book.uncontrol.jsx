@@ -235,16 +235,9 @@ const handleOnChangeFile = (event) => {
             </div>
   
 
-  
-
-   
-
-   
-
-
   </Form>
 
-      </Modal>
+            </Modal>
         </>
     );
 
