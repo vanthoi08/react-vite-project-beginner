@@ -1,6 +1,6 @@
-import { Button, Popconfirm, Table } from "antd";
+import { Button, notification, Popconfirm, Table } from "antd";
 import { useEffect, useState } from "react";
-import { fetchAllBookAPI } from "../../services/api.service";
+import { deleteBookAPI, fetchAllBookAPI } from "../../services/api.service";
 import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
 import ViewBookDetail from "./view.book.detail";
 import CreateBookControl from "./create.book.control";
@@ -43,6 +43,20 @@ const loadBook = async() =>{
 }
 
 const handleDeleteBook =async (id)=>{
+  const res =  await deleteBookAPI(id);
+  if(res.data){
+    notification.success({
+      message: "Delete book",
+      description: " Xóa book thành công"
+    })
+    await loadBook();
+  } else{
+    notification.error({
+      message: "Error delete book",
+      description: JSON.stringify(res.message)
+    })
+
+  }
 }
 const onChange = (pagination, filters, sorter, extra) => {
   // setCurrent, setPageSize
